@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class Wallet {
 
     private String name;
@@ -37,23 +36,4 @@ public class Wallet {
             System.out.println("Pembayaran Gagal, saldo wallet tidak mencukupi");
         }
     }
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        Wallet mywallet = new Wallet("Main Wallet", 10000);
-
-        while(true){
-            System.out.println("Masukkan Jumlah Bayar (ketik 0 untuk keluar program): ");
-            double amount = input.nextDouble();
-
-            if (amount == 0) {
-                break;
-            }else{
-                mywallet.pay(amount);
-            }
-
-        }
-    }
-
 }

@@ -6,6 +6,7 @@ public class Main {
 
         Wallet mywallet = new Wallet("Main Wallet", 10000);
         DebitCard myDebit = new DebitCard("1125032", 100000, "140207");
+        CreditCard myCredit = new CreditCard("1125032", 100000, "567", "140207");
 
         while(true){
             System.out.println("Masukkan Jumlah Bayar (ketik 0 untuk keluar program): ");
@@ -13,9 +14,10 @@ public class Main {
             if (amount == 0) {
                 System.out.println("Terima kasih!");
                 break;
-            }
+            } 
             System.out.println("1. Cash");
-            System.out.println("2. Debit");
+            System.out.println("2. Debit Card");
+            System.out.println("3. Credit Card");
             System.out.println("Pilih metode pembayaran : ");
             int pilihan = input.nextInt();
 
@@ -36,6 +38,24 @@ public class Main {
                         }
                     }else{
                         myDebit.pay(amount);
+                        break;
+                    }
+                }
+            }else if(pilihan == 3){
+                System.out.println("Masukan pin :");
+                input.nextLine();
+                String pinCredit = input.nextLine();
+
+                for (int i = 2; i >= 1; i--) {
+                    if (!pinCredit.equals(myDebit.getPin()) ) {
+                        System.out.println("Pin salah!, Sisa "+i+" kali percobaan");
+                        System.out.println("Masukan pin :");
+                        pinCredit = input.nextLine();
+                        if (i==1) {
+                            System.out.println("Silahkan mengulang pembayaran!");
+                        }
+                    }else{
+                        myCredit.pay(amount);
                         break;
                     }
                 }
